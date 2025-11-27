@@ -1,0 +1,17 @@
+{% extends "dna_center_cisco/base.html" %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h1 class="h4 mb-3">Cisco DNA Center Network Automation</h1>
+    <p class="text-muted">
+      IST105 - Assignment #9 – Django + Cisco DNA Center REST API + MongoDB.
+    </p>
+
+    <ul>
+      <li><a href="{% url 'dna_center_cisco:auth' %}">Authenticate & Show Token</a></li>
+      <li><a href="{% url 'dna_center_cisco:devices' %}">List Network Devices</a></li>
+      <li><a href="{% url 'dna_center_cisco:interfaces' %}">Show Device Interfaces</a></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

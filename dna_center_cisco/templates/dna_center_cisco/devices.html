@@ -1,0 +1,43 @@
+{% extends "dna_center_cisco/base.html" %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="h5 mb-3">Network Devices</h2>
+
+    {% if error %}
+      <div class="alert alert-danger">
+        <strong>Error:</strong> {{ error }}
+      </div>
+    {% endif %}
+
+    {% if devices %}
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Hostname</th>
+              <th>IP Address</th>
+              <th>Platform</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for d in devices %}
+              <tr>
+                <td>{{ d.hostname|default:"N/A" }}</td>
+                <td>{{ d.managementIpAddress|default:"N/A" }}</td>
+                <td>{{ d.platformId|default:"N/A" }}</td>
+                <td>{{ d.reachabilityStatus|default:"N/A" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      {% if not error %}
+        <p>No devices found.</p>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "dna_center_cisco/base.html" %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="h5 mb-3">Authentication Token</h2>
+
+    {% if error %}
+      <div class="alert alert-danger">
+        <strong>Error:</strong> {{ error }}
+      </div>
+    {% endif %}
+
+    {% if token %}
+      <p>Below is your Cisco DNA Center authentication token:</p>
+      <pre class="bg-dark text-white p-3" style="white-space: pre-wrap;">{{ token }}</pre>
+      <div class="alert alert-success mt-3">
+        ✅ Authentication successful!
+      </div>
+    {% else %}
+      <p>No token available.</p>
+      <p>Reload this page if you want to request it again.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
